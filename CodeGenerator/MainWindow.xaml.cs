@@ -32,46 +32,70 @@ namespace CodeGenerator
                 );
             this.Close();
         }
-
-
     }
 
     public class AvrPortCodeGenerator
     {
-        private const string PortX = @"class Port{0}{{
+        private const string PortX = @"
+
+    class Port{0}{{
         public:
-	    void static Set(uint8_t uCharValue)
+	    void static SetBits(uint8_t uCharValue)
        {{
             PORT{0} |= uCharValue;
        }}
+        
+        void static Set()
+       {{
+            PORT{0} = 0xff;
+       }}
 
-        void static Clear(uint8_t uCharValue)
+        void static ClearBits(uint8_t uCharValue)
        {{
             PORT{0} &= ~(uCharValue);
        }}
 
-        void static Toggle(uint8_t uCharValue)
+         void static Clear()
+       {{
+            PORT{0} = 0;
+       }}
+
+        void static ToggleBits(uint8_t uCharValue)
        {{
             PORT{0} ^= uCharValue;
+       }}
+        void static Toggle()
+       {{
+            PORT{0} ^= 0xff;
        }}
 
         uint8_t static Check()
        {{
             return PIN{0};
        }}
+        void static AsOutput()
+       {{
+            DDR{0} &= ~(0xff);
+       }}
 
-        void static AsOutput(uint8_t uCharValue)
+        void static AsInputBits()
+       {{
+            DDR{0} |= 0xff;
+       }}
+        void static AsOutputBits(uint8_t uCharValue)
        {{
             DDR{0} &= ~(uCharValue);
        }}
 
-        void static AsInput(uint8_t uCharValue)
+        void static AsInputBits(uint8_t uCharValue)
        {{
             DDR{0} |= uCharValue;
        }}
        }};";
 
-        private const string PinXY = @"class Pin_{0}{1}{{
+        private const string PinXY = @"
+
+    class Pin_{0}{1}{{
 public:
 	    void static Set()
 	    {{

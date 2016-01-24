@@ -75,7 +75,7 @@ namespace CodeGenerator
        }}
         void static AsOutput()
        {{
-            DDR{0} &= ~(0xff);
+            DDR{0} &= 0;
        }}
 
         void static AsInputBits()

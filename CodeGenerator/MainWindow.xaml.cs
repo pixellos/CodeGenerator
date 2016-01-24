@@ -36,6 +36,7 @@ namespace CodeGenerator
 
     public class AvrPortCodeGenerator
     {
+        private const string Disclaimer = "/*AUTO GENERATED CODE BY MATEUSZ POPIELARZ pixdevlife.azurewebsites.net*/";
         private const string PortX = @"
 
     class Port{0}{{
@@ -73,23 +74,24 @@ namespace CodeGenerator
        {{
             return PIN{0};
        }}
+        
         void static AsOutput()
        {{
-            DDR{0} &= 0;
+            DDR{0} = 0xff;
+       }}
+        void static AsInput()
+       {{
+            DDR{0} = 0;
        }}
 
-        void static AsInputBits()
-       {{
-            DDR{0} |= 0xff;
-       }}
         void static AsOutputBits(uint8_t uCharValue)
        {{
-            DDR{0} &= ~(uCharValue);
+            DDR{0} |= (uCharValue);
        }}
 
         void static AsInputBits(uint8_t uCharValue)
        {{
-            DDR{0} |= uCharValue;
+            DDR{0} &= ~uCharValue;
        }}
        }};";
 
@@ -119,12 +121,12 @@ public:
 
 	    void static AsOutput()
 	    {{
-		    DDR{0} &= ~(1<<{1});
+		    DDR{0} |= (1<<{1});
 	    }}
 
 	    void static AsInput()
 	    {{
-		    DDR{0} |= 1<<{1};
+		    DDR{0} &= !(1<<{1});
 	    }}
         }};";
 
@@ -140,7 +142,7 @@ public:
 
         public static string Generate(string letters, int PinCount)
         {
-            var result = "";
+            var result = Disclaimer;
             foreach (var chars in letters)
             {
                 result += AvrPortCodeGenerator.GetGeneratedTextForPortX(chars.ToString());

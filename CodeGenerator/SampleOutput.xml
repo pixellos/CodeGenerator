@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AVRModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Model>Atmega16</Model>
+  <PortsLetters>ABCD</PortsLetters>
+  <BitAtPortCount>8</BitAtPortCount>
+  <FunctionsCode>
+    <Function>
+      <string>Test</string>
+    </Function>
+    <Code>
+      <string>TestCode</string>
+    </Code>
+  </FunctionsCode>
+  <PinToFunctions>
+    <Id>
+      <string>A1</string>
+    </Id>
+    <Values>
+      <ArrayOfString>
+        <string>Test</string>
+      </ArrayOfString>
+    </Values>
+  </PinToFunctions>
+  <FunctionToFunctions>
+    <Id>
+      <string>FunctionTest</string>
+    </Id>
+    <Values>
+      <ArrayOfString>
+        <string>Test</string>
+      </ArrayOfString>
+    </Values>
+  </FunctionToFunctions>
+</AVRModel>

@@ -7,11 +7,67 @@
   <FunctionsCode>
   
     <Function>
-      <string>Test</string>
+      <string>PIN</string>
+      <string>Interrupt1</string>
     </Function>
 	
     <Code>
-      <string>TestCode</string>
+      <string>
+        <!--
+	    void static Set()
+	    {{
+		    PORT{0} |= 1 << {1};
+	    }}
+
+	    void static Clear()
+	    {{
+		    PORT{0} &= ~(1<<{1});
+	    }}
+
+	    void static Toggle() 
+	    {{
+		    PORT{0} ^= (1<<{1});
+	    }}
+
+	    bool static Check()
+	    {{
+		    return ((PIN{0} >> {1}) & 1);
+	    }}
+
+	    void static AsOutput()
+	    {{
+		    DDR{0} |= (1<<{1});
+	    }}
+
+	    void static AsInput()
+	    {{
+		    DDR{0} &= !(1<<{1});
+	    }}
+            -->
+      </string>
+      <string>
+        <!--
+     static void SetInterrupt(){
+				 SET(GICR,INT2);
+			 }
+			 static void ClearInterrupt()
+			 {
+				 CLEAR(GICR,INT2);
+			 }
+			 
+			 static void FallingEdge(){
+				 CLEAR(MCUCSR,ISC2);
+			 }
+
+			 static void RisingEdge(){
+				 CLEAR(MCUCSR,ISC2); // If ISC2 is written to one, a rising edge on INT2 activates the interrupt;
+			 }
+
+			 static void FlagClear(){
+				 CLEAR(GIFR,INTF2);
+			 }    
+    -->
+      </string>
     </Code>
 	
   </FunctionsCode>
@@ -19,12 +75,12 @@
   <PinToFunctions>
   
     <Id>
-      <string>A1</string>
+      <string>D3</string>
     </Id>
 	
     <Values>
       <ArrayOfString>
-        <string>Test</string>
+        <string>Interrupt1</string>
       </ArrayOfString>
     </Values>
 	
@@ -33,15 +89,15 @@
   <FunctionToFunctions>
   
     <Id>
-      <string>FunctionTest</string>
+      <string>Int1</string>
     </Id>
 	
     <Values>
       <ArrayOfString>
-        <string>Test</string>
+        <string>Interrupt1</string>
       </ArrayOfString>
     </Values>
-	
+  
   </FunctionToFunctions>
   
 </AVRModel>

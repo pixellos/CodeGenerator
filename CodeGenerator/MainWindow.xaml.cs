@@ -30,6 +30,9 @@ namespace CodeGenerator
             AvrPortCodeGenerator.Save(
                 AvrPortCodeGenerator.Generate(Letters.Text, int.Parse(Pins.Text))
                 );
+            
+            FriendlyCodeGeneratorAvr codeGenerator = new FriendlyCodeGeneratorAvr();
+            codeGenerator.GenerateFromAvrModel();
             this.Close();
         }
     }

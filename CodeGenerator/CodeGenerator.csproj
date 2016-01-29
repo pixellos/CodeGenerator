@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="AVR Model.cs" />
     <Compile Include="AvrCodeGenerator.cs" />
+    <Compile Include="AvrModelGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

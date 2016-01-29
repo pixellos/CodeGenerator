@@ -27,12 +27,13 @@ namespace CodeGenerator
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            /*
             AvrPortCodeGenerator.Save(
                 AvrPortCodeGenerator.Generate(Letters.Text, int.Parse(Pins.Text))
                 );
-            
+            */
             FriendlyCodeGeneratorAvr codeGenerator = new FriendlyCodeGeneratorAvr();
-            codeGenerator.GenerateFromAvrModel();
+            AvrPortCodeGenerator.Save(codeGenerator.GenerateFromAvrModel());
             this.Close();
         }
     }

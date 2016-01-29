@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="157" Width="189">
+        Title="MainWindow" Height="522" Width="514">
     <Grid>
         <Label x:Name="label" Content="Port Letters" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Height="45"/>
         <Label x:Name="label1" Content="No of pins&#xD;&#xA;" HorizontalAlignment="Left" Margin="15,45,0,0" VerticalAlignment="Top" Height="25"/>
